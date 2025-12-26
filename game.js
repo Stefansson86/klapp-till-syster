@@ -20,16 +20,6 @@ const gamePage = document.getElementById('game-page');
 const completionPage = document.getElementById('completion-page');
 const playAgainBtn = document.getElementById('play-again-btn');
 
-// Hangman parts in order
-const hangmanParts = [
-    'head',
-    'body',
-    'left-arm',
-    'right-arm',
-    'left-leg',
-    'right-leg'
-];
-
 // Initialize game
 function initGame() {
     currentWord = WORDS[currentLevel];
@@ -41,11 +31,6 @@ function initGame() {
     nextLevelBtn.style.display = 'none';
 
     currentLevelDisplay.textContent = currentLevel + 1;
-
-    // Reset hangman display
-    hangmanParts.forEach(partId => {
-        document.getElementById(partId).style.display = 'none';
-    });
 
     createWordDisplay();
     createKeyboard();
@@ -114,7 +99,6 @@ function handleGuess(letter) {
         // Wrong guess
         wrongGuesses++;
         updateKeyboardButton(letter, false);
-        updateHangman();
 
         if (wrongGuesses >= MAX_WRONG_GUESSES) {
             handleLoss();
@@ -128,14 +112,6 @@ function updateKeyboardButton(letter, correct) {
     if (button) {
         button.disabled = true;
         button.classList.add(correct ? 'correct' : 'incorrect');
-    }
-}
-
-// Update hangman drawing
-function updateHangman() {
-    if (wrongGuesses > 0 && wrongGuesses <= hangmanParts.length) {
-        const partId = hangmanParts[wrongGuesses - 1];
-        document.getElementById(partId).style.display = 'block';
     }
 }
 
