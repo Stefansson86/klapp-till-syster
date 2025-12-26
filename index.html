@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Julhänga - Christmas Hangman</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Game Page -->
+    <div id="game-page" class="page active">
+        <div class="snowflakes" aria-hidden="true">
+            <div class="snowflake">❅</div>
+            <div class="snowflake">❆</div>
+            <div class="snowflake">❅</div>
+            <div class="snowflake">❆</div>
+            <div class="snowflake">❅</div>
+            <div class="snowflake">❆</div>
+        </div>
+
+        <div class="container">
+            <h1 class="title">🎄 Julhänga 🎄</h1>
+
+            <div class="level-indicator">
+                <span>Nivå <span id="current-level">1</span> av 4</span>
+            </div>
+
+            <div class="hangman-display">
+                <svg id="hangman-svg" viewBox="0 0 200 250" width="200" height="250">
+                    <!-- Gallows -->
+                    <line x1="10" y1="230" x2="150" y2="230" stroke="#8B4513" stroke-width="4"/>
+                    <line x1="50" y1="230" x2="50" y2="20" stroke="#8B4513" stroke-width="4"/>
+                    <line x1="50" y1="20" x2="130" y2="20" stroke="#8B4513" stroke-width="4"/>
+                    <line x1="130" y1="20" x2="130" y2="50" stroke="#8B4513" stroke-width="4"/>
+
+                    <!-- Hangman parts (hidden initially) -->
+                    <circle id="head" cx="130" cy="70" r="20" stroke="#c41e3a" stroke-width="3" fill="none" style="display:none"/>
+                    <line id="body" x1="130" y1="90" x2="130" y2="150" stroke="#c41e3a" stroke-width="3" style="display:none"/>
+                    <line id="left-arm" x1="130" y1="110" x2="100" y2="130" stroke="#c41e3a" stroke-width="3" style="display:none"/>
+                    <line id="right-arm" x1="130" y1="110" x2="160" y2="130" stroke="#c41e3a" stroke-width="3" style="display:none"/>
+                    <line id="left-leg" x1="130" y1="150" x2="110" y2="190" stroke="#c41e3a" stroke-width="3" style="display:none"/>
+                    <line id="right-leg" x1="130" y1="150" x2="150" y2="190" stroke="#c41e3a" stroke-width="3" style="display:none"/>
+                </svg>
+            </div>
+
+            <div class="word-display" id="word-display"></div>
+
+            <div class="message" id="message"></div>
+
+            <div class="keyboard" id="keyboard"></div>
+
+            <button id="next-level-btn" class="next-btn" style="display:none;">Nästa Nivå 🎅</button>
+        </div>
+    </div>
+
+    <!-- Completion Page -->
+    <div id="completion-page" class="page">
+        <div class="snowflakes" aria-hidden="true">
+            <div class="snowflake">❅</div>
+            <div class="snowflake">❆</div>
+            <div class="snowflake">❅</div>
+            <div class="snowflake">❆</div>
+            <div class="snowflake">❅</div>
+            <div class="snowflake">❆</div>
+        </div>
+
+        <div class="container completion-container">
+            <h1 class="title">🎉 Grattis! 🎉</h1>
+            <div class="completion-message" id="completion-text">
+                <!-- User will add the text here -->
+                <p>Du har klarat alla nivåer!</p>
+                <p>God Jul! 🎄</p>
+            </div>
+            <button id="play-again-btn" class="next-btn">Spela Igen 🎮</button>
+        </div>
+    </div>
+
+    <script src="game.js"></script>
+</body>
+</html>
